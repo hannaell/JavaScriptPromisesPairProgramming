@@ -25,7 +25,7 @@
     <script>
       'use strict';
 
-      speechSynthesis.speak(new SpeechSynthesisUtterance('Hey'))
+
 
 
       function getRandomQuote(quotes) {
@@ -40,9 +40,13 @@
 
       button.addEventListener('click', () => {
         getRandomQuote()
-          .then(quote => quoteElement.textContent = `${quote.quote} - ${quote.character}`)
+          .then(quote => {
+            quoteElement.textContent = `${quote.quote} - ${quote.character}`;
+            speechSynthesis.speak(new SpeechSynthesisUtterance(`${quote.quote}`))
+          })
           .catch(console.error);
       });
+
     </script>
   </body>
 </html>
